@@ -151,11 +151,11 @@ def main(argv=None):
 
     # We will form our response here based on the verbosity levels. This makes the logic below a lot easier.
     if (args.verbosity == '0'):
-        output = 'Posted %s hrs ago ; %s' % (hourssinceposted, title)
+        output = u'Posted %s hrs ago ; %s' % (hourssinceposted, title)
     elif (args.verbosity == '1'):
-        output = 'Posted %s hrs ago ; Title: %s; Link: %s' % (hourssinceposted, title, link)
+        output = u'Posted %s hrs ago ; Title: %s; Link: %s' % (hourssinceposted, title, link)
     elif (args.verbosity == '2'):
-        output = 'Posted %s hrs ago ; Title: %s ; Description: %s ; Link: %s' % (hourssinceposted, title, description, link)
+        output = u'Posted %s hrs ago ; Title: %s ; Description: %s ; Link: %s' % (hourssinceposted, title, description, link)
 
     # Check for strings that match, resulting in critical status
     if (args.criticalif):
@@ -213,25 +213,25 @@ def main(argv=None):
 
 def exitok(output, perfdata):
     if (perfdata):
-        print "OK - %s|'RSS'=0;1;2;0;2" % output
+        print u"OK - %s|'RSS'=0;1;2;0;2" % output
     else:
-        print 'OK - %s' % output
+        print u'OK - %s' % output
     sys.exit(0)
 
 
 def exitwarning(output, perfdata):
     if (perfdata):
-        print "WARNING - %s|'RSS'=1;1;2;0;2" % output
+        print u"WARNING - %s|'RSS'=1;1;2;0;2" % output
     else:
-        print 'WARNING - %s' % output
+        print u'WARNING - %s' % output
     sys.exit(1)
 
 
 def exitcritical(output, perfdata):
     if (perfdata):
-        print "CRITICAL - %s|'RSS'=2;1;2;0;2" % output
+        print u"CRITICAL - %s|'RSS'=2;1;2;0;2" % output
     else:
-        print 'CRITICAL - %s' % output
+        print u'CRITICAL - %s' % output
     sys.exit(2)
 
 

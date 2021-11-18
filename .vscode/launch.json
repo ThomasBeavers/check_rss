@@ -13,10 +13,8 @@
 			"args": [
 				"-H",
 				"https://status.cloud.google.com/en/feed.atom",
-				"-T",
-				"24",
-				"-v",
-				"0"
+				"-C",
+				"Resolved"
 			]
 		}
 	]
