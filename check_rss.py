@@ -34,6 +34,7 @@ import feedparser
 import argparse
 import sys
 import datetime
+import dateutil.parser
 
 
 def fetch_feed_last_entry(feed_url):
@@ -134,15 +135,17 @@ def main(argv=None):
 
     # we have everything we need, let's start 
     last_entry = fetch_feed_last_entry(rssfeed)
-    feeddate = last_entry['updated_parsed']
+    # feeddate = last_entry['updated_parsed']
     title = last_entry['title']
     description = last_entry['description']
     link = last_entry['link']
 
 
     # Get the difference in time from last post
-    datetime_now = datetime.datetime.now()
-    datetime_feeddate = datetime.datetime(*feeddate[:6]) #http://stackoverflow.com/a/1697838/726716
+    # datetime_now = datetime.datetime.now()
+    # datetime_feeddate = datetime.datetime(*feeddate[:6]) #http://stackoverflow.com/a/1697838/726716
+    datetime_now = datetime.datetime.utcnow().replace(tzinfo=dateutil.tz.gettz('UTC'))
+    datetime_feeddate = dateutil.parser.parse(last_entry['updated'])
     timediff = datetime_now - datetime_feeddate
     hourssinceposted = timediff.days * 24 + timediff.seconds / 3600
 
