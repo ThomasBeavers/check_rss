@@ -210,28 +210,30 @@ def main(argv=None):
     # If we made it this far, we must be ok
     exitok(output, perfdata)
 
+def printUtf8(msg):
+    print (msg.encode('utf-8'))
 
 def exitok(output, perfdata):
     if (perfdata):
-        print u"OK - %s|'RSS'=0;1;2;0;2" % output
+        printUtf8(u"OK - %s|'RSS'=0;1;2;0;2" % output)
     else:
-        print u'OK - %s' % output
+        printUtf8(u'OK - %s' % output)
     sys.exit(0)
 
 
 def exitwarning(output, perfdata):
     if (perfdata):
-        print u"WARNING - %s|'RSS'=1;1;2;0;2" % output
+        printUtf8(u"WARNING - %s|'RSS'=1;1;2;0;2" % output)
     else:
-        print u'WARNING - %s' % output
+        printUtf8(u'WARNING - %s' % output)
     sys.exit(1)
 
 
 def exitcritical(output, perfdata):
     if (perfdata):
-        print u"CRITICAL - %s|'RSS'=2;1;2;0;2" % output
+        printUtf8(u"CRITICAL - %s|'RSS'=2;1;2;0;2" % output)
     else:
-        print u'CRITICAL - %s' % output
+        printUtf8(u'CRITICAL - %s' % output)
     sys.exit(2)
 
 
